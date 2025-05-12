@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>American Airlines Fare Predictor 1993-2004 Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            font-size: 1.5em;
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>US AIRLINES FARES PREDICTOR</h2>
+        <form action="{{ url_for('predict') }}" method="POST">
+
+            <label for="Year">Year:</label>
+            <input type="number" name="Year" required>
+
+            <label for="quarter">quarter:</label>
+            <input type="number" step="1" name="quantity" required>
+
+          <div class="form-group">
+      <label for="OriginCity">OriginCity</label>
+      <select id="OriginCity" name="OriginCity">
+        <option value="Chicago">Chicago</option>
+        <option value="New York City">New York City</option>
+        <option value="Boston">Boston</option>
+        <option value="Los Angeles">Los Angeles</option>
+        <option value="Dallas/Fort Worth">Houston</option>
+        <option value="Houston">Houston</option>
+        <option value="Cleveland">Cleveland</option>
+        <option value="Miami">Miami</option>
+        <option value="Atlanta">Atlanta</option>
+        <option value="Detroit">Detroit</option>
+        <option value="Austin">Austin</option>
+        <option value="Columbus">Columbus</option>
+        <option value="Charlotte">Charlotte</option>
+        <option value="San Francisco">San Francisco</option>
+        <option value="Kansas City">Kansas City</option>
+        <option value="Albuquerque">Albuquerque</option>
+        <option value="Denver">Denver</option>
+        <option value="Cincinnati">Cincinnati</option>
+        <option value="Las Vegas">Las Vegas</option>
+        <option value="Birmingham">Birmingham</option>
+        <option value="Buffalo">LBuffalo</option>
+        <option value="Indianapolis">Indianapolis</option>
+        <option value="Jacksonville">Jacksonville</option>
+        <option value="Hartford">Hartford</option>
+        <option value="Phoenix">Phoenix</option>
+        <option value="El Paso">El Paso</option>
+        <option value="Grand Rapids">Grand Rapids</option>
+        <option value="Charleston">Charleston</option>
+        <option value="Memphis">Memphis</option>
+        <option value="Norfolk">Norfolk</option>
+        <option value="Minneapolis/St. Paul">Minneapolis/St. Paul</option>
+        <option value="Nashville">Nashville</option>
+        <option value="New Orleans">New Orleans</option>
+        <option value="Dayton">Dayton</option>
+        <option value="Des Moines">Des Moines</option>
+        <option value="Milwaukee">Milwaukee</option>
+        <option value="Fort Myers">Fort Myers</option>
+        <option value="Albany">Albany</option>
+        <option value="Colorado Springs">Colorado Springd</option>
+        <option value="Little Rock">Little Rock</option>
+        <option value="Boise">Boise</option>
+        <option value="Portland">Portland</option>
+        <option value="Greensboro/High Point">Greensboro/High Port</option>
+        <option value="Knoxville">Knoxville</option>
+        <option value="Madison">Madison</option>
+      </select>
+      </div>
+      <br>
+
+            <div class="form-group">
+      <label for="DestinaionCity">DestinationCity</label>
+      <select id="DestinationCity" name="DestinationCity">
+        <option value="Chicago">Chicago</option>
+        <option value="New York City">New York City</option>
+        <option value="Boston">Boston</option
+        <option value="Los Angeles">Los Angeles</option>
+        <option value="Houston">Houston</option><option value="Boise">Boise</option>
+        <option value="Portland">Portland</option>
+        <option value="Greensboro/High Point">Greensboro/High Port</option>
+        <option value="Knoxville">Knoxville</option>
+        <option value="Madison">Madison</option>
+        <option value="Cleveland">Cleveland</option>
+        <option value="Miami">Miami</option>
+        <option value="Atlanta">Atlanta</option>
+        <option value="Detroit">Detroit</option>
+        <option value="Austin">Austin</option>
+        <option value="Columbus">Columbus</option>
+        <option value="Charlotte">Charlotte</option>
+        <option value="San Francisco">San Francisco</option>
+        <option value="Kansas City">Kansas City</option>
+        <option value="Albuquerque">Albuquerque</option>
+        <option value="Denver">Denver</option>
+        <option value="Cincinnati">Cincinnati</option>
+        <option value="Las Vegas">Las Vegas</option>
+        <option value="Birmingham">Birmingham</option>
+        <option value="Buffalo">LBuffalo</option>
+        <option value="Indianapolis">Indianapolis</option>
+        <option value="Jacksonville">Jacksonville</option>
+        <option value="Hartford">Hartford</option>
+        <option value="Phoenix">Phoenix</option>
+        <option value="El Paso">El Paso</option>
+        <option value="Grand Rapids">Grand Rapids</option>
+        <option value="Charleston">Charleston</option>
+        <option value="Memphis">Memphis</option>
+        <option value="Norfolk">Norfolk</option>
+        <option value="Minneapolis/St. Paul">Minneapolis/St. Paul</option>
+        <option value="Nashville">Nashville</option>
+        <option value="New Orleans">New Orleans</option>
+        <option value="Dayton">Dayton</option>
+        <option value="Des Moines">Des Moines</option>
+        <option value="Milwaukee">Milwaukee</option>
+        <option value="Fort Myers">Fort Myers</option>
+        <option value="Albany">Albany</option>
+        <option value="Colorado Springs">Colorado Springd</option>
+        <option value="Little Rock">Albany</option>
+        <option value="Boise">Boise</option>
+        <option value="Portland">Portland</option>
+        <option value="Greensboro/High Point">Greensboro/High Port</option>
+        <option value="Knoxville">Knoxville</option>
+        <option value="Madison">Madison</option>
+      </select>
+           </div>
+           <br>
+
+             <label for="Origin_Airport_ID">Origin_Airport_ID:</label>
+            <input type="number" step="1" name="Origin_Airport_ID" required>
+
+             <label for="Destination_Airport_ID">Destination_Airport_ID</label>
+            <input type="number" step="1" name="Destination_Airport_ID" required>
+
+             <label for="Distance_Btwn_Airport_Miles">Distance_Btwn_Airport_Miles</label>
+            <input type="number" step="1" name="Distance_Btwn_Airport_Miles" required>
+
+             <label for="passengers">passengers</label>
+            <input type="number" step="1" name="passengers" required>
+
+             <label for="large_ms">large_ms</label>
+            <input type= "number" step="1" name="large_ms" required>
+
+             <label for="largest_carrier_average_fare">largest_carrier_average_fare</label>
+            <input type="number" step="1" name="largest_carrier_average_fare" required>
+
+            <input type="submit" value="Predict">
+        </form>
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
